@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:euroImpianti": "node dist/euro-impianti/server/server.mjs"
+    "serve:ssr:euroImpianti": "node dist/euro-impianti/server/server.mjs",
+    "start": "node dist/euro-impianti/server/main.mjs",
+  "dev:ssr": "ng serve --configuration=development",
+  "build:ssr": "ng build --configuration=production && ng run euroImpianti:server",
+  "serve:ssr": "node dist/euro-impianti/server/main.mjs"
   },
   "private": true,
   "dependencies": {

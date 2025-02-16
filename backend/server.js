@@ -13,13 +13,13 @@ app.get('/', (req, res) => {
     res.send('Server funzionante! 🚀 Le API sono disponibili su /api/products');
 });
 
-// Configurazione PostgreSQL
+// Configurazione PostgreSQL usando variabili d’ambiente
 const pool = new Pool({
-    user: 'postgres',
-    host: '37.182.98.7',
-    database: 'euroimpianti',
-    password: 'postgres', // Cambia con la tua password di PostgreSQL
-    port: 5432
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT
 });
 
 // Configurazione Multer per upload immagini
@@ -32,18 +32,16 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // **API REST**
-// 📌 1️⃣ Ottenere tutti i prodotti
 app.get('/api/products', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM products');
         res.json(result.rows);
     } catch (err) {
-        console.error("Errore nella query:", err); // Aggiunto console.error
+        console.error("Errore nella query:", err);
         res.status(500).json({ error: err.message });
     }
 });
 
-// 📌 2️⃣ Aggiungere un nuovo prodotto
 app.post('/api/products', upload.single('image'), async (req, res) => {
     const { name, description } = req.body;
     const image = req.file ? `/uploads/${req.file.filename}` : null;
@@ -59,7 +57,7 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
     }
 });
 
-// 📌 3️⃣ Modificare un prodotto
+// Modifica prodotto
 app.put('/api/products/:id', upload.single('image'), async (req, res) => {
     const { id } = req.params;
     const { name, description } = req.body;
@@ -76,7 +74,7 @@ app.put('/api/products/:id', upload.single('image'), async (req, res) => {
     }
 });
 
-// 📌 4️⃣ Eliminare un prodotto
+// Eliminazione prodotto
 app.delete('/api/products/:id', async (req, res) => {
     const { id } = req.params;
     try {
@@ -91,5 +89,4 @@ app.delete('/api/products/:id', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server avviato su http://localhost:${PORT}`);
-    
 });
