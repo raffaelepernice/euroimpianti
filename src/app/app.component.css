@@ -1,0 +1,26 @@
+/* app.component.css */
+html, body {
+    height: 100%;    /* Imposta l'altezza al 100% della finestra del browser */
+    margin: 0;       /* Rimuove margini di default */
+    padding: 0;      /* Rimuove padding di default */
+    overflow-x: hidden; /* Nasconde lo scroll orizzontale, nel caso ci sia */
+  }
+  
+  .container-fluid, .container {
+    width: 100%;     /* Assicurati che la larghezza sia al 100% della finestra */
+    height: 100%;    /* Assicurati che l'altezza sia al 100% della finestra */
+  }
+  
+  body {
+    display: flex;     /* Usa Flexbox per il layout della pagina */
+    flex-direction: column;   /* Disporre gli elementi in colonna (navbar, contenuto, footer) */
+  }
+  
+  app-content {
+    flex: 1;   /* Questo fa in modo che il contenuto prenda tutto lo spazio disponibile */
+  }
+  
+  app-footer {
+    flex: 0 1 auto;   /* Il footer si adatta al contenuto e rimane in fondo */
+  }
+  

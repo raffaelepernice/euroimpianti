@@ -1,0 +1,66 @@
+/* Footer */
+.footer {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.footer-left {
+    flex: 1;
+}
+
+.footer-left h2 {
+    color: #0d6efd;
+}
+
+.footer-center {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-center h3 {
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #0d6efd;
+}
+
+/* Parte Destra */
+.footer-right {
+    flex: 1;
+    text-align: right;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #0d6efd;
+}

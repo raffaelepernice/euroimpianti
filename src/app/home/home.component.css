@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column; /* Disporre i contenuti in verticale */
+  height: 100vh; /* Assicurati che il contenitore occupi tutta l'altezza della finestra */
+  padding: 0;
+}
+
+.container-fluid{
+    padding: 0;
+}
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
